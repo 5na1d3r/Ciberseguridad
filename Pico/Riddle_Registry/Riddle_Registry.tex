@@ -1,0 +1,158 @@
+\documentclass[12pt, letterpaper]{article}
+
+% Paquete necesario para gestionar fuentes con XeLaTeX
+\usepackage{fontspec}
+
+% Configuración de márgenes básicos
+\usepackage[margin=1in]{geometry}
+
+% Paquete de inserción de imágenes
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{subcaption}
+
+% Definimos Arial como la fuente principal
+\setmainfont{Arial}
+
+\title{Reporte de reto Forense - PicoCTF}
+\author{Snaider}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introducción}
+Primeramente vemos que tenemos un reto forense el cual se trata de analizar un documento para ver lo que lleva oculto, llevando mas allá nuestros conocimientos en análisis de archivos.
+\section{Revisión del documento}
+\begin{itemize}
+
+\item Como primera impresión observamos que hay partes censuradas en el documento.
+
+\begin{tcolorbox}[
+    colframe=black,
+    boxrule=1pt,
+    sharp corners,
+    boxsep=0pt,
+    left=0pt,
+    right=0pt
+]
+\includegraphics[
+    trim=2cm 2.9cm 5.3cm 9.2cm,
+    clip,
+    width=\linewidth,
+    height=10cm
+]{./img/vista_superficial.png}
+\end{tcolorbox}
+\par\vspace{1cm}
+\item Se puede ver que si seleccionamos la parte censurada y la copiamos a un editor de texto habremos obtenido datos interesantes.
+\begin{tcolorbox}[
+    colframe=black,
+    boxrule=1pt,
+    sharp corners,
+    boxsep=0pt,
+    left=0pt,
+    right=10pt
+]
+    \begin{minipage}{0.5\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{./img/textos_censurados.png}
+        Textos censurados
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.47\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{./img/textos_descubiertos.png}
+        Contenido descubierto de textos censurados
+    \end{minipage}
+
+    \vspace{0.5cm}
+    \centering   
+    \textbf{Descubrimiento de textos censurados}
+\end{tcolorbox}
+\item Viendo que en el anterior paso no encontramos nada relevante tendremos que intentar otros metodos, intentemos ver los datos en bruto (Raw Data) usando la herramienta \textbf{strings}, haber que encontramos.
+    \begin{tcolorbox}[
+    colframe=black,
+    boxrule=1pt,
+    sharp corners,
+    boxsep=0pt,
+    top=0pt,
+    left=0pt,
+    right=0pt
+]
+    \begin{minipage}{\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{./img/raw_data.png}
+    \end{minipage}
+
+    \vspace{0.2cm}
+    \centering   
+    \textbf{Datos en bruto}
+\end{tcolorbox}
+
+\item Desciframos el cifrado sospechoso
+    \begin{tcolorbox}[
+    colframe=black,
+    boxrule=1pt,
+    sharp corners,
+    boxsep=0pt,
+    top=0pt,
+    left=0pt,
+    right=0pt
+    ]
+    \begin{minipage}{\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{./img/flag.png}
+    \end{minipage}
+
+    \vspace{0.2cm}
+    \centering   
+    \textbf{Descifrando}
+
+    \end{tcolorbox}
+
+\item Introducimos la flag en el reto de Pico CTF para ver si realmente acabamos el reto.
+\begin{tcolorbox}[
+    colframe=black,
+    boxrule=1pt,
+    sharp corners,
+    boxsep=0pt,
+    top=0pt,
+    left=0pt,
+    right=0pt
+    ]
+    \begin{minipage}{\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{./img/introduciendo_flag.png}
+    \end{minipage}
+
+    \vspace{0.5cm}
+    \centering   
+    \textbf{Introduciendo flag}
+
+    \end{tcolorbox}
+
+\item Y listo, nos salio las felicitaciones, reto resuelto.
+
+\begin{tcolorbox}[
+    colframe=black,
+    boxrule=1pt,
+    sharp corners,
+    boxsep=0pt,
+    top=10pt,
+    left=10pt,
+    right=10pt
+    ]
+    \begin{minipage}{\linewidth}
+        \centering
+        \includegraphics[width=\linewidth]{./img/solucionado.png}
+    \end{minipage}
+
+    \vspace{0.5cm}
+    \centering   
+    \textbf{Reto resuelto}
+
+    \end{tcolorbox}
+\end{itemize}
+
+\end{document}
