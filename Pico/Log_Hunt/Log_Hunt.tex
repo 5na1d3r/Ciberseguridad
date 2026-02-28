@@ -1,0 +1,173 @@
+\documentclass[12pt, letterpaper]{article}
+
+% --- IDIOMA Y FUENTES ---
+% Solución moderna para error de babel en XeLaTeX (Arch Linux)
+\usepackage[provide=*]{babel}
+\babelprovide[import, main]{spanish}
+
+\usepackage{fontspec}
+\setmainfont{Arial}
+
+% --- CONFIGURACIÓN DE TÍTULOS (TODO A 12PT) ---
+\usepackage{titlesec}
+% Forzamos secciones y subsecciones a 12pt (el segundo número 14 es el interlineado)
+\titleformat{\section}{\normalfont\fontsize{12}{14}\bfseries}{\thesection}{1em}{}
+\titleformat{\subsection}{\normalfont\fontsize{12}{14}\bfseries}{\thesubsection}{1em}{}
+
+% --- MÁRGENES Y ESTÉTICA ---
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{tcolorbox}
+\usepackage{subcaption}
+
+% Redefinición de \maketitle para que el título también sea 12pt
+\makeatletter
+\renewcommand{\maketitle}{
+  \begin{center}
+    {\fontsize{12}{14}\bfseries \@title \par}
+    \vspace{0.4cm}
+    {\fontsize{12}{14} \@author \par}
+    {\fontsize{12}{14} \@date \par}
+    \vspace{0.8cm}
+  \end{center}
+}
+\makeatother
+
+% --- DATOS DEL DOCUMENTO ---
+\title{Log Hunt - PicoCTF}
+\author{Snaider}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Introducción}
+Primeramente observamos que en el reto ya nos da una pista al decirnos "Our server seems to be leaking pieces of a secret flag in its logs", con eso ya sabemos que tenemos que armar la flag que esta en pedazos dentro del log, demosle un vistazo al archivo.
+\section{Revisión del documento}
+\begin{itemize}
+
+\item Como primera impresión observamos que hay partes censuradas en el documento.
+
+\begin{tcolorbox}[
+    colframe=black,
+    boxrule=1pt,
+    sharp corners,
+    boxsep=0pt,
+    left=0pt,
+    right=0pt
+]
+    \centering
+    \vspace{0.2cm}
+    \textbf{Textos censurados}
+\end{tcolorbox}
+
+\par\vspace{1cm}
+
+\item Se puede ver que si seleccionamos la parte censurada y la copiamos a un editor de texto habremos obtenido datos interesantes.
+
+\begin{tcolorbox}[
+    colframe=black,
+    boxrule=1pt,
+    sharp corners,
+    boxsep=0pt,
+    left=0pt,
+    right=10pt
+]
+    \begin{minipage}{0.5\linewidth}
+        \centering
+        \small Textos censurados
+    \end{minipage}
+    \hfill
+    \begin{minipage}{0.47\linewidth}
+        \centering
+        \small Contenido descubierto
+    \end{minipage}
+
+    \vspace{0.5cm}
+    \centering   
+    \textbf{Descubrimiento de textos censurados}
+\end{tcolorbox}
+
+\item Viendo que en el anterior paso no encontramos nada relevante tendremos que intentar otros métodos, intentemos ver los datos en bruto (Raw Data) usando la herramienta \textbf{strings}, a ver qué encontramos.
+
+\begin{tcolorbox}[
+    colframe=black,
+    boxrule=1pt,
+    sharp corners,
+    boxsep=0pt,
+    top=0pt,
+    bottom=7pt,
+    left=0pt,
+    right=0pt
+]
+    \begin{minipage}{\linewidth}
+        \centering
+    \end{minipage}
+    \centering  
+        \vspace{0cm}
+
+    \textbf{Datos en bruto}
+\end{tcolorbox}
+
+\item Desciframos el cifrado sospechoso.
+\begin{tcolorbox}[
+    colframe=black,
+    boxrule=1pt,
+    sharp corners,
+    boxsep=0pt,
+    top=0pt,
+    left=0pt,
+    right=0pt
+]
+    \begin{minipage}{\linewidth}
+        \centering
+    \end{minipage}
+    
+    \centering
+    \vspace{0.2cm}
+    \textbf{Descifrando}
+\end{tcolorbox}
+
+\item Introducimos la flag en el reto de Pico CTF para ver si realmente acabamos el reto.
+\begin{tcolorbox}[
+    colframe=black,
+    boxrule=1pt,
+    sharp corners,
+    boxsep=0pt,
+    top=0pt,
+    left=0pt,
+    right=0pt
+]
+    \begin{minipage}{\linewidth}
+        \centering
+    \end{minipage}
+    \vspace{0.5cm}
+    \centering   
+    \textbf{Introduciendo flag}
+\end{tcolorbox}
+
+\item Y listo, nos salió las felicitaciones, reto resuelto.
+
+\begin{tcolorbox}[
+    colframe=black,
+    boxrule=1pt,
+    sharp corners,
+    boxsep=0pt,
+    top=10pt,
+    bottom=10pt,
+    left=10pt,
+    right=10pt
+]
+    \begin{minipage}{\linewidth}
+        \centering
+    \end{minipage}
+    \centering 
+        \vspace{0.1cm}
+
+    \textbf{Reto resuelto}
+\end{tcolorbox}
+
+\end{itemize}
+
+\end{document}
